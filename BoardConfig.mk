@@ -151,3 +151,30 @@ TW_EXCLUDE_DEFAULT_USB_INIT := true
 # Debug
 TWRP_INCLUDE_LOGCAT := true
 TARGET_USES_LOGD := true
+TARGET_USES_MKE2FS := true
+
+# Device config
+TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
+TW_FRAMERATE := 60
+TW_SCREEN_BLANK_ON_BOOT := true
+TW_SUPPORT_INPUT_AIDL_HAPTICS := true
+
+TW_EXCLUDE_DEFAULT_USB_INIT := true
+RECOVERY_SDCARD_ON_DATA := true
+TARGET_USE_CUSTOM_LUN_FILE_PATH := /config/usb_gadget/g1/functions/mass_storage.0/lun.%d/file
+
+ifneq ($(OF_HIDE_NOTCH),1)
+    # Configure Status bar icons for regular TWRP builds only
+    TW_CUSTOM_CLOCK_POS := 30
+    TW_CUSTOM_CPU_POS := 605
+    TW_STATUS_ICONS_ALIGN := center
+endif
+
+# Decryption
+TW_INCLUDE_CRYPTO := true
+TW_INCLUDE_FBE_METADATA_DECRYPT := true
+TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster4.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster41.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libpuresoftkeymasterdevice.so
+
