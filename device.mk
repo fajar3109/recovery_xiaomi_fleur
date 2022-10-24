@@ -48,6 +48,9 @@ PRODUCT_PACKAGES += \
     android.hardware.boot@1.1-impl \
     bootctrl.mt6781.recovery
 
+# fscrypt policy
+TW_USE_FSCRYPT_POLICY := 2
+
 # Update Engine
 PRODUCT_PACKAGES += \
     update_engine \
