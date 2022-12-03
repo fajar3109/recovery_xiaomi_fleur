@@ -124,10 +124,17 @@ TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 # System as Root
 BOARD_SUPPRESS_SECURE_ERASE := true
 
-# Encryption
+# Additional binaries & libraries needed for recovery
+TARGET_RECOVERY_DEVICE_MODULES += \
+    libkeymaster4 \
+    libkeymaster41 \
+    libpuresoftkeymasterdevice
+
+# Hack: prevent anti rollback
 PLATFORM_SECURITY_PATCH := 2099-12-31
 VENDOR_SECURITY_PATCH := 2099-12-31
-PLATFORM_VERSION := 20.1.0
+PLATFORM_VERSION := 99.87.36
+PLATFORM_VERSION_LAST_STABLE := $(PLATFORM_VERSION)
 
 # Crypto
 TW_INCLUDE_CRYPTO := true
